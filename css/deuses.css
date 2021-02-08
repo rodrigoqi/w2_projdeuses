@@ -1,0 +1,16 @@
+.cardgod{
+    background-color: #EEEEEE;
+    color: black;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.cardgod img{
+    width: 100%;
+    height: 30%;
+    margin-top: 5%;
+}
+
+.cardgod hr{
+    background-color: #999999;
+}
