@@ -19,6 +19,12 @@
 </head>
 
 <body>
+	<?php
+		include_once "controller/conexao.php";
+		Conexao::getConexao();
+	?>
+
+
 	<div class="container">
 		<br>
 		<div class="row text-center">
@@ -71,16 +77,10 @@
 
 				}
 
-
-
 			?>
 
-
-
-			
 		</div>
 		
-
 	</div>
 </body>
 
