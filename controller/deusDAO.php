@@ -85,6 +85,75 @@
 
         }
 
+        public static function getDeus($deus){
+            $con = Conexao::getConexao();
+            $sql = null;
+
+            if(is_numeric($deus)){
+                $sql = $con->prepare("select * from deuses where codigo = ?");
+                $sql->bindParam(1, $deus);
+            } else if(is_string($deus)){
+                $sql = $con->prepare("select * from deuses where nome = ?");
+                $sql->bindParam(1, $deus);
+            }
+
+            $sql->setFetchMode(PDO::FETCH_ASSOC);
+            $sql->execute();
+
+            $deusEncontrado = null;
+            if($registro = $sql->fetch()){
+                $deusEncontrado = new Deus(
+                    $registro["codigo"],
+                    $registro["nome"],
+                    $registro["reino"],
+                    $registro["elemento"],
+                    $registro["arma"],
+                    $registro["descricao"],
+                    $registro["forca"],
+                    $registro["foto"]
+                );
+
+            }
+
+            return $deusEncontrado;
+
+        }
+
+        public static function getDeuses($campo, $operador, $valor, $ordem){
+            $con = Conexao::getConexao();
+
+            if($operador==""){
+                $sql = $con->prepare("select * from deuses order by $campo $ordem");
+            } else {
+                $sql = $con->prepare("select * from deuses where $campo $operador ?
+                                order by $campo $ordem");
+                $sql->bindParam(1, $valor);
+            }
+
+            $sql->setFetchMode(PDO::FETCH_ASSOC);
+            $sql->execute();
+
+            $deuses = array();
+
+            while($registro = $sql->fetch()){
+                $deusEncontrado = new Deus(
+                    $registro["codigo"],
+                    $registro["nome"],
+                    $registro["reino"],
+                    $registro["elemento"],
+                    $registro["arma"],
+                    $registro["descricao"],
+                    $registro["forca"],
+                    $registro["foto"]
+                );
+             
+                $deuses[] = $deusEncontrado;
+
+            }
+
+            return $deuses;
+
+        }
 
     }
 

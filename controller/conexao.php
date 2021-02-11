@@ -9,10 +9,9 @@
             $senha = ""; //vazio, root, 123
             $stringConexao = "mysql:host=localhost;port=3306;dbname=dbdeuses";
 
-
             if(!isset(self::$conexao)){
                 try{
-                    $conexao = new PDO($stringConexao, $usuario, $senha);
+                    self::$conexao = new PDO($stringConexao, $usuario, $senha);
                 } catch(PDOException $e){
                     $erro = $e->getCode();
                     //tipos de erro mais comum do PDO

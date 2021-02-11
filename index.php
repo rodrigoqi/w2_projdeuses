@@ -43,7 +43,8 @@
 		<div class="row">
 
 			<?php
-				require "deuses.php";
+				include_once "deuses.php";
+				include_once "controller/deusDAO.php";
 
 				$deuses = new Deuses();
 				$deuses->carregarDeusesPadrao();
@@ -59,6 +60,8 @@
 					$descricao = $deus->getDescricao();
 					$forca = $deus->getForca();
 					$foto = $deus->getFoto();
+
+					DeusDAO::inserir($deus);
 
 					echo "
 						<div class='col-md-4 text-center cardgod'>
