@@ -6,6 +6,7 @@
     //pesquisar (múltiplos métodos com critérios diferentes)
 
     include_once "controller/conexao.php";
+    include_once "model/deus.php";
 
     class DeusDAO{
 

@@ -43,41 +43,15 @@
 		<div class="row">
 
 			<?php
-				include_once "deuses.php";
+
 				include_once "controller/deusDAO.php";
+				include_once "view/deusview.php";
 
-				$deuses = new Deuses();
-				$deuses->carregarDeusesPadrao();
+				$deuses = DeusDAO::getDeuses("codigo", "", "", "asc");
 
-				//$deuses->adicionarDeus($d1);
-
-				foreach($deuses->getDeuses() as $deus){
-					$codigo = $deus->getCodigo();
-					$nome = $deus->getNome();
-					$reino = $deus->getReino();
-					$elemento = $deus->getElemento();
-					$arma = $deus->getArma();
-					$descricao = $deus->getDescricao();
-					$forca = $deus->getForca();
-					$foto = $deus->getFoto();
-
-					DeusDAO::inserir($deus);
-
-					echo "
-						<div class='col-md-4 text-center cardgod'>
-						<img src='img/$foto'>
-						<h2>$nome</h2>
-						<p><strong>Reino: $reino</strong></p>
-						<p>$descricao</p>
-						<hr>
-						<p>
-						<strong>Elemento: </strong>$elemento<br>
-						<strong>Arma: </strong>$arma<br>
-						<strong>Força: </strong>$forca
-						</p>
-						</div>
-					";
-
+				foreach($deuses as $deus){
+					
+					DeusView::gerarCard($deus);
 
 				}
 
