@@ -5,8 +5,8 @@
     //alterar (método único) [ok]
     //pesquisar (múltiplos métodos com critérios diferentes)
 
-    include_once "controller/conexao.php";
-    include_once "model/deus.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/conexao.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/model/deus.php";
 
     class DeusDAO{
 

@@ -20,10 +20,10 @@
 <body>
 
     <?php
-        include_once "model/deus.php";
-        include_once "controller/deusDAO.php";
-        include_once "controller/conexao.php";
-        include_once "view/deusview.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/model/deus.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/deusDAO.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/conexao.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/view/deusview.php";
 
         //Criando um array de Deuses
 
@@ -61,6 +61,95 @@
             "frigg.jpg"
         );
 
+        $deuses[] = new Deus(
+            4,
+            "Tyr",
+            "Asgard",
+            "força",
+            "espada",
+            "Tyr é o Deus da guerra, o mais valente de todos os deuses na mitologia nórdica. Tyr é tão corajoso, que colocou sua mão nos maxilares do lobo feroz Fenrir, enquanto os outros deuses prenderam Fenrir a uma rocha.",
+            63,
+            "tyr.jpg"
+        );
+    
+        $deuses[] = new Deus(
+            5,
+            "Balder",
+            "Asgard",
+            "imortalidade",
+            "lança",
+            "Outro filho de Odin e Frigg, é o mais belo, misericordioso e justo dos deuses. Espalha paz onde quer que ande. Por ser o deus mais amado e popular, tornou-se um dos alvos preferidos das intrigas de Loki.",
+            41,
+            "balder.jpg"
+        );
+    
+        $deuses[] = new Deus(
+            6,
+            "Hel",
+            "Niflheim",
+            "gelo",
+            "colar",
+            "Filha de Loki com uma das gigantes do gelo, Hel é a Deusa superior de Niflheim, a Terra dos Mortos. Descrita como uma figura sempre sombria, é vida da cintura para cima e morta da cintura para baixo.",
+            45,
+            "hel.jpg"
+        );
+
+        $deuses[] = new Deus(
+            7,
+            "Freya",
+            "Vanir",
+            "magia",
+            "espada",
+            "Filha de Skade (o deus do mar) e irmã de Frey, ela é a deusa do amor, beleza, sensualidade e fertilidade. Também considerada deusa da magia e da riqueza, as suas lágrimas transformavam-se em ouro.",
+            45,
+            "freya.jpg"
+        );
+
+        $deuses[] = new Deus(
+            8,
+            "Odin",
+            "Asgard",
+            "água",
+            "lança",
+            "O deus da guerra, da poesia e da sabedoria. Como pai dos deuses, tinha o poder de vigiar todos os nove reinos com seu único olho (que brilhava tanto quanto o sol), além de ser um amante dos vinhos.",
+            1000,
+            "odin.jpg"
+        );
+
+        $deuses[] = new Deus(
+            9,
+            "Mimir",
+            "Jotunheim",
+            "água",
+            "inteligência",
+            "Este gigante é conhecido por sua sabedoria. Durante a guerra entre Asir e Vanir, Mimir foi decapitado. Para manter sua sabedoria, Odin manteve sua cabeça com magia para que pudesse continuar a aconselhá-lo.",
+            38,
+            "mimir.jpg"
+        );
+
+        $deuses[] = new Deus(
+            10,
+            "Vali",
+            "Asgard",
+            "luz",
+            "flexa",
+            "Vali é o filho mais novo de Odin e da gigante Grid, sendo concebido com o propósito de matar Höðr, vingando a morte de Balder. Representa a luz do dia, que se torna mais forte com o fim do inverno.",
+            54,
+            "vali.jpg"
+        );
+
+        $deuses[] = new Deus(
+            11,
+            "Vali",
+            "Asgard",
+            "luz",
+            "flexa",
+            "Vali é o filho mais novo de Odin e da gigante Grid, sendo concebido com o propósito de matar Höðr, vingando a morte de Balder. Representa a luz do dia, que se torna mais forte com o fim do inverno.",
+            54,
+            "vali.jpg"
+        );
+
+
         //inserindo os deuses no banco de dados
         foreach($deuses as $deus){
             DeusDAO::inserir($deus);
@@ -73,7 +162,7 @@
         DeusDAO::atualizar($d1);
 
         //excluir um deus
-        DeusDAO::excluir(3);
+        DeusDAO::excluir(11);
 
     ?>
 
