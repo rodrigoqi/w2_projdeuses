@@ -24,6 +24,11 @@
         include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/view/listadeusesview.php";
         include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/deusDAO.php";
         include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/model/deus.php";    
+
+        session_start();
+        if(!isset($_SESSION["emEdicao"])){
+            $_SESSION["emEdicao"] = 0;
+        }
         
         $campo = "";
         $operacao = "";
@@ -45,7 +50,7 @@
                 $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");    
             }
             if($_GET["btnFiltro"]=="inserir"){
-
+                
             }
         } else {
             $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");

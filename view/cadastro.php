@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <form method="get" action="cadastro.php" enctype="multipart/form-data">
+        <form method="post" action="cadastro.php" enctype="multipart/form-data">
 
             <div class="row text-center">
                 <div class="col-md-3">
@@ -54,7 +54,7 @@
             <div class="row">
 
                 <div class="col-md-6">
-                        <img src="../img/semfoto.jpg" style="width:100%; height:90%;">
+                        <img src="../img/<?php echo $foto; ?>" style="width:100%; height:90%;">
                         <input type="file" name="fileFoto" style="background-color: #AAAAAA!important;">
                 </div>
 
