@@ -20,6 +20,40 @@
 
 <body>
 
+    <?php
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/view/listadeusesview.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/deusDAO.php";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/model/deus.php";    
+        
+        $campo = "";
+        $operacao = "";
+        $valor = "";
+        $ordem = "";
+
+        $deuses = null;
+
+        if(isset($_GET["btnFiltro"])){
+            if($_GET["btnFiltro"]=="filtrar"){
+                $campo = $_GET["selTipoFiltro"];
+                $operacao = $_GET["selOperacao"];
+                $valor = $_GET["txtFiltro"];
+                $ordem = $_GET["selOrdenacao"];
+
+                $deuses = DeusDAO::getDeuses($campo, $operacao, $valor, $ordem);
+            }
+            if($_GET["btnFiltro"]=="desfazer"){
+                $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");    
+            }
+            if($_GET["btnFiltro"]=="inserir"){
+
+            }
+        } else {
+            $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");
+        }
+        
+
+    ?>
+
     <div class="container">
         <br>
         <div class="row text-center">
@@ -82,6 +116,13 @@
             <br><br>
             
         </form>
+
+        <?php
+            
+            ListaDeusesView::geraLista($deuses);
+
+        ?>
+
 
     </div>
 </body>
