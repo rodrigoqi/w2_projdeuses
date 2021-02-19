@@ -4,7 +4,7 @@
 
         public static function geraLista($lista){
             echo "
-                <form action='cadastro.php' method='get'>
+                <form action='cadastro.php' method='post'>
                     <div class='row' style='background-color: #555555; color: #FFFFFF; '>
                         <div class='col-md-1'>
 

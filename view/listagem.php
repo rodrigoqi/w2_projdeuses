@@ -50,7 +50,9 @@
                 $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");    
             }
             if($_GET["btnFiltro"]=="inserir"){
-                
+                session_start();
+                $_SESSION["emEdicao"] = 0;
+                header("Location: cadastro.php");
             }
         } else {
             $deuses = DeusDAO::getDeuses("codigo", "", "", "asc");
@@ -125,6 +127,15 @@
         <?php
             
             ListaDeusesView::geraLista($deuses);
+
+            echo "
+                <script>
+                    $('#txtFiltro').val('$valor');
+                    $('#selTipoFiltro').val('$campo');
+                    $('#selOperacao').val('$operacao');
+                    $('#selOrdenacao').val('$ordem');
+                </script>
+            ";
 
         ?>
 

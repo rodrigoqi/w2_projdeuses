@@ -84,6 +84,17 @@
 
             $sql->execute();
 
+            echo "
+                $codigo<br>;
+                $nome<br>;
+                $reino<br>;
+                $elemento<br>;
+                $arma<br>;
+                $descricao<br>;
+                $forca<br>;
+                $foto<br>;
+            ";
+
         }
 
         public static function getDeus($deus){
