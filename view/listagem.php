@@ -26,6 +26,16 @@
         include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/model/deus.php";    
 
         session_start();
+
+		if(isset($_SESSION["logado"])){
+			if($_SESSION["logado"]==true){
+				//está tudo ok. Não faço nada
+			} else{
+				header("Location: ../login.php");
+			}
+		} else {
+			header("Location: ../login.php");
+		}
         if(!isset($_SESSION["emEdicao"])){
             $_SESSION["emEdicao"] = 0;
         }

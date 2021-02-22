@@ -14,14 +14,38 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
 
+	<?php
+
+		include_once $_SERVER['DOCUMENT_ROOT'] . "/projdeuses/controller/usuarioDAO.php";
+
+		session_start();
+		if(!isset($_SESSION["logado"])){
+			$_SESSION["logado"]=false;
+		}
+
+		if(isset($_GET["entrar"])){
+			$usuario = $_GET["txtUsuario"];
+			$senha = $_GET["txtSenha"];
+			if(UsuarioDAO::logar($usuario, $senha)){
+				$_SESSION["logado"]=true;
+				session_cache_expire(10);
+				header("Location: view/listagem.php");
+			} else {
+				$_SESSION["logado"]=false;
+			}
+		}
+        
+
+	?>
+
+
 	<div class="container">
 		<br>
-		<form method="get" action="index.php">
+		<form method="get" action="login.php">
 			<div class="row" id="caixaLogin">
 				<div class="col-md-5" style="font-size:1.2em">
 					<strong>Quer editar os Deuses Nórdicos?</strong>

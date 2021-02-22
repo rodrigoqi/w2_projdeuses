@@ -23,6 +23,17 @@
 		include_once "controller/conexao.php";
 		Conexao::getConexao();
 
+		session_start();
+		if(isset($_SESSION["logado"])){
+			if($_SESSION["logado"]==true){
+				//está tudo ok. Não faço nada
+			} else{
+				header("Location: login.php");
+			}
+		} else {
+			header("Location: login.php");
+		}
+
 	?>
 
 
